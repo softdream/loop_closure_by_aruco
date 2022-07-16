@@ -1,0 +1,6 @@
+/home/riki/Test/aruco_loop_detection/MonocularCalibration/build/CMakeFiles/rebuild_cache.dir
+/home/riki/Test/aruco_loop_detection/MonocularCalibration/build/CMakeFiles/edit_cache.dir
+/home/riki/Test/aruco_loop_detection/MonocularCalibration/build/src/CMakeFiles/rebuild_cache.dir
+/home/riki/Test/aruco_loop_detection/MonocularCalibration/build/src/CMakeFiles/edit_cache.dir
+/home/riki/Test/aruco_loop_detection/MonocularCalibration/build/src/CMakeFiles/calib.dir
+/home/riki/Test/aruco_loop_detection/MonocularCalibration/build/src/CMakeFiles/monocular_calibration.dir
