@@ -81,7 +81,17 @@ public:
 			cv::aruco::drawAxis(marker_img_, K_, dist_, rvs[i], tvs[i], 0.14);
 			std::cout<<"rotation vector : "<<std::endl<<rvs[i]<<std::endl;
 			std::cout<<"transport vector : "<<std::endl<<tvs[i]<<std::endl;
+			
 			// caculate the pose
+			cv::Mat vect = ( cv::Mat_<DataType>( 3, 1 ) << 0, 0, 1 );
+			cv::Mat r_matrix, t_matrix;
+			cv::Rodrigues( rvs[i], r_matrix );
+			cv::transpose( tvs[i], t_matrix );
+
+			cv::Mat cam_pose_matrix = r_matrix.inv() * ( -t_matrix );
+			cv::Mat cam_rot_matrix = r_matrix.inv() * vect;
+
+			std::cout<<"Camera Position : "<<cam_pose_matrix.t()<<std::endl<<"Camera Direction : "<<cam_rot_matrix.t()<<std::endl;
 		}	
 		
 		cv::imshow("marked image", marker_img_);
