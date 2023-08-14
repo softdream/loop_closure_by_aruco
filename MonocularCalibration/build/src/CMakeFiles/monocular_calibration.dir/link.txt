@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmonocular_calibration.a CMakeFiles/monocular_calibration.dir/MonocularCalibration.cpp.o
-/usr/bin/ranlib libmonocular_calibration.a

@@ -83,15 +83,20 @@ public:
 			std::cout<<"transport vector : "<<std::endl<<tvs[i]<<std::endl;
 			
 			// caculate the pose
-			cv::Mat vect = ( cv::Mat_<DataType>( 3, 1 ) << 0, 0, 1 );
-			cv::Mat r_matrix, t_matrix;
-			cv::Rodrigues( rvs[i], r_matrix );
-			cv::transpose( tvs[i], t_matrix );
+			cv::Mat camPoseMatrix, camVecMatrix;
+			cv::Mat vect = ( cv::Mat_<double>( 3, 1 ) << 0, 0, 1 );
 
-			cv::Mat cam_pose_matrix = r_matrix.inv() * ( -t_matrix );
-			cv::Mat cam_rot_matrix = r_matrix.inv() * vect;
+			cv::Mat rMatrix, tMatrix;
+			cv::Rodrigues( rvs[i], rMatrix );
+			cv::transpose( tvs[i], tMatrix );
+			cv::transpose( tMatrix, tMatrix );
+			std::cout<<"rMatrix.cols = "<<rMatrix.cols<<", rMatrix.rows = "<<rMatrix.rows<<std::endl;
+			std::cout<<"tMatrix.cols = "<<tMatrix.cols<<", tMatrix.rows = "<<tMatrix.rows<<std::endl;
+			
+			camPoseMatrix = rMatrix.inv() * ( -tMatrix );
+			camVecMatrix = rMatrix.inv() * vect;
 
-			std::cout<<"Camera Position : "<<cam_pose_matrix.t()<<std::endl<<"Camera Direction : "<<cam_rot_matrix.t()<<std::endl;
+			std::cout<<"Camera Position : "<<camPoseMatrix.t()<<"\n Camera Direction : "<<camVecMatrix.t()<<std::endl;
 		}	
 		
 		cv::imshow("marked image", marker_img_);

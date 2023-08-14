@@ -21,7 +21,7 @@ int main()
 
 	aruco::Observation<double> obs( K, dist, marker_len );
 	
-	cv::Mat image = cv::imread( "./data/4.jpg" );
+	cv::Mat image = cv::imread( "./data/2.jpg" );
 	obs.detectMarker( image );
 	cv::waitKey(0);
 
